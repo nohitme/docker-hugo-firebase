@@ -1,6 +1,7 @@
-LABEL maintainer="nohitme@gmail.com"
-
 FROM node:8.4.0-alpine
+
+# labels
+LABEL maintainer="nohitme@gmail.com"
 
 # variables
 ENV HUGO_VERSION 0.26
