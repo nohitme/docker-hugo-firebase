@@ -1,10 +1,10 @@
-FROM node:8.4.0-alpine
+FROM node:9.2.0-alpine
 
 # labels
 LABEL maintainer="nohitme@gmail.com"
 
 # variables
-ENV HUGO_VERSION 0.26
+ENV HUGO_VERSION 0.31
 
 # install hugo
 RUN set -x && \
@@ -18,4 +18,5 @@ RUN set -x && \
   rm /var/cache/apk/*
 
 # install firebase-cli
-RUN npm install -g firebase-tools
+# use --unsafe-perm to solve the issue: https://github.com/firebase/firebase-tools/issues/372
+RUN npm install -g firebase-tools --unsafe-perm
