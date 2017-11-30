@@ -4,7 +4,7 @@ FROM node:9.2.0-alpine
 LABEL maintainer="nohitme@gmail.com"
 
 # variables
-ENV HUGO_VERSION 0.31
+ENV HUGO_VERSION 0.31.1
 
 # install hugo
 RUN set -x && \
