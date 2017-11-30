@@ -9,6 +9,7 @@ ENV HUGO_VERSION 0.31
 # install hugo
 RUN set -x && \
   apk add --update wget ca-certificates && \
+  update-ca-certificates && \
   cd /tmp &&\
   wget https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_${HUGO_VERSION}_Linux-64bit.tar.gz -O hugo.tar.gz && \
   tar xzf hugo.tar.gz && \
