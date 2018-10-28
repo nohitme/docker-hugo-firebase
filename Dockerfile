@@ -1,14 +1,14 @@
-FROM node:9.3.0-alpine
+FROM node:10-alpine
 
 # labels
 LABEL maintainer="nohitme@gmail.com"
 
 # variables
-ENV HUGO_VERSION 0.46
+ENV HUGO_VERSION 0.49.2
 
 # install hugo
 RUN set -x && \
-  apk add --no-cache wget ca-certificates && \
+  apk add --update --upgrade --no-cache wget ca-certificates && \
   # make sure we have up-to-date certificates
   update-ca-certificates && \
   cd /tmp &&\
@@ -17,8 +17,7 @@ RUN set -x && \
   mv hugo /usr/bin/hugo && \
   rm -r * && \
   # don't delete ca-certificates pacakge here since it remove all certs too
-  apk del wget
-
-# install firebase-cli
-# use --unsafe-perm to solve the issue: https://github.com/firebase/firebase-tools/issues/372
-RUN npm install -g firebase-tools --unsafe-perm
+  apk del --purge wget && \
+  # install firebase-cli
+  # use --unsafe-perm to solve the issue: https://github.com/firebase/firebase-tools/issues/372
+  npm install -g firebase-tools --unsafe-perm
